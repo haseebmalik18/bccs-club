@@ -3,12 +3,16 @@ import { BsGithub } from "react-icons/bs";
 import { BsGlobe2 } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import Image from 'next/image';
-import avatarPic from '../../../images/team/club-coordinators/avatar.jpg'
+import fazliPic from '../../../images/team/club-coordinators/fazli-altun.jpeg'
+import haseebPic from '../../../images/team/club-coordinators/haseeb-malik.jpg'
+import oleksiiPic from '../../../images/team/club-coordinators/oleksii-sudarin.jpeg'
+import vannaPic from '../../../images/team/club-coordinators/vanna-fang.jpeg'
 
 interface Member {
   name: string;
   role: string;
   photo: any;
+  objectPosition?: string; // Optional field for image cropping
   linkedinUrl?: string; // Optional field
   githubUrl?: string; // Optional field
   personalWebsiteUrl?: string; // Optional field
@@ -17,9 +21,26 @@ interface Member {
 
 const members: Member[] = [
   {
-    name: 'Name',
+    name: 'Fazli Altun',
     role: 'Club Coordinator',
-    photo: avatarPic,
+    photo: fazliPic,
+  },
+  {
+    name: 'Haseeb Malik',
+    role: 'Club Coordinator',
+    photo: haseebPic,
+    objectPosition: 'center 30%',
+  },
+  {
+    name: 'Oleksii Sudarin',
+    role: 'Club Coordinator',
+    photo: oleksiiPic,
+  },
+  {
+    name: 'Vanna Fang',
+    role: 'Club Coordinator',
+    photo: vannaPic,
+    objectPosition: 'center 15%',
   },
 ];
 
@@ -41,7 +62,8 @@ export default function ClubCoordinatorsSection() {
               <Image
                 alt={member.name}
                 src={member.photo}
-                className="mx-auto h-56 w-56 rounded-full"
+                className="mx-auto h-40 w-40 rounded-full object-cover"
+                style={member.objectPosition ? { objectPosition: member.objectPosition } : undefined}
                 placeholder="blur"
               />
               <h3 className="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">{member.name}</h3>
